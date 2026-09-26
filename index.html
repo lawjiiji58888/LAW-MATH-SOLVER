@@ -1,0 +1,1417 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>LAW Math Challenge</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+
+body{
+font-family:Arial,sans-serif;
+background:linear-gradient(135deg,#eef4ff,#f8fbff);
+color:#172033;
+min-height:100vh
+}
+
+header{
+background:linear-gradient(135deg,#2563eb,#4f46e5);
+color:white;
+text-align:center;
+padding:25px 15px;
+box-shadow:0 5px 20px #0002
+}
+
+header h1{font-size:32px}
+header p{margin-top:8px}
+
+.container{
+max-width:900px;
+margin:auto;
+padding:25px 15px
+}
+
+.card{
+background:white;
+padding:25px;
+border-radius:18px;
+box-shadow:0 8px 30px #0001;
+margin-bottom:20px
+}
+
+.login{
+max-width:500px;
+margin:35px auto;
+text-align:center
+}
+
+.login input{
+width:100%;
+padding:15px;
+border:2px solid #d5dbea;
+border-radius:10px;
+font-size:18px;
+margin:18px 0
+}
+
+.btn{
+border:0;
+border-radius:10px;
+cursor:pointer;
+background:#2563eb;
+color:white;
+padding:14px 25px;
+font-size:17px
+}
+
+.full{width:100%}
+.hidden{display:none}
+
+.top{
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:10px;
+margin-bottom:20px
+}
+
+.finish{
+background:#dc2626;
+padding:10px 15px;
+font-size:14px
+}
+
+.level{
+text-align:center;
+background:#eef4ff;
+padding:15px;
+border-radius:12px;
+margin-bottom:15px
+}
+
+.level h2{
+color:#2563eb;
+margin-bottom:5px
+}
+
+.progress{
+height:12px;
+background:#e5e7eb;
+border-radius:20px;
+overflow:hidden;
+margin-top:10px
+}
+
+.progressBar{
+height:100%;
+width:0%;
+background:#2563eb;
+transition:.3s
+}
+
+.stats{
+display:grid;
+grid-template-columns:repeat(5,1fr);
+gap:10px;
+margin-bottom:20px
+}
+
+.stat{
+background:#f8fafc;
+padding:14px 8px;
+border-radius:12px;
+text-align:center
+}
+
+.stat strong{
+display:block;
+font-size:23px;
+color:#2563eb
+}
+
+.timer{
+text-align:center;
+font-size:21px;
+font-weight:bold;
+color:#dc2626;
+margin:15px
+}
+
+.question{
+background:#eef4ff;
+border-radius:15px;
+padding:35px 20px;
+text-align:center;
+margin:20px 0
+}
+
+.question h2{
+color:#2563eb;
+margin-bottom:15px
+}
+
+#questionText{
+font-size:40px;
+font-weight:bold
+}
+
+.answerBox{
+display:flex;
+gap:10px
+}
+
+.answerBox input{
+flex:1;
+padding:16px;
+border:2px solid #d5dbea;
+border-radius:10px;
+font-size:22px;
+text-align:center;
+outline:none
+}
+
+.answerBox input:focus{
+border-color:#2563eb
+}
+
+.answerBox button{
+background:#2563eb;
+color:white;
+padding:0 25px;
+border:0;
+border-radius:10px
+}
+
+.result{
+display:none;
+padding:18px;
+border-radius:12px;
+text-align:center;
+margin-top:20px
+}
+
+.correct{
+background:#dcfce7;
+color:#166534
+}
+
+.wrong{
+background:#fee2e2;
+color:#991b1b
+}
+
+table{
+width:100%;
+border-collapse:collapse;
+margin-top:15px
+}
+
+th,td{
+padding:12px;
+border-bottom:1px solid #ddd;
+text-align:center
+}
+
+th{
+background:#eef4ff
+}
+
+.tableWrap{
+overflow:auto
+}
+
+@media(max-width:700px){
+
+.stats{
+grid-template-columns:1fr 1fr
+}
+
+.answerBox{
+flex-direction:column
+}
+
+.answerBox button{
+padding:14px
+}
+
+#questionText{
+font-size:30px
+}
+
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>🧮 LAW MATH CHALLENGE</h1>
+<p>हर 20 सही जवाब के बाद Level Up 🚀</p>
+</header>
+
+<div class="container">
+
+<!-- NAME PAGE -->
+
+<div id="namePage" class="card login">
+
+<h2>👋 Welcome</h2>
+
+<p style="margin-top:10px">
+अपना नाम डालकर Math Challenge शुरू करें
+</p>
+
+<input
+id="playerName"
+placeholder="अपना नाम लिखें"
+autocomplete="off"
+>
+
+<button class="btn full" onclick="startPlayer()">
+🚀 Start Challenge
+</button>
+
+</div>
+
+
+<!-- GAME PAGE -->
+
+<div id="gamePage" class="hidden">
+
+<div class="card">
+
+<div class="top">
+
+<h2>
+Player:
+<span id="playerDisplay"></span>
+</h2>
+
+<button class="btn finish" onclick="finishGame()">
+Finish
+</button>
+
+</div>
+
+
+<div class="level">
+
+<h2 id="levelName">Level 1</h2>
+
+<p id="levelDescription">
+2-digit questions
+</p>
+
+<p style="margin-top:8px">
+Next Level:
+<b><span id="levelProgress">0</span>/20</b>
+correct
+</p>
+
+<div class="progress">
+<div id="progressBar" class="progressBar"></div>
+</div>
+
+</div>
+
+
+<div class="stats">
+
+<div class="stat">
+<strong id="score">0</strong>
+Score
+</div>
+
+<div class="stat">
+<strong id="correct">0</strong>
+Correct
+</div>
+
+<div class="stat">
+<strong id="wrong">0</strong>
+Wrong
+</div>
+
+<div class="stat">
+<strong id="questionNo">0</strong>
+Questions
+</div>
+
+<div class="stat">
+<strong id="accuracy">0%</strong>
+Accuracy
+</div>
+
+</div>
+
+
+<div class="timer">
+⏱️ <span id="timer">00:00</span>
+</div>
+
+
+<div class="question">
+
+<h2>Question</h2>
+
+<div id="questionText">
+Loading...
+</div>
+
+</div>
+
+
+<div class="answerBox">
+
+<input
+id="answer"
+type="number"
+inputmode="decimal"
+placeholder="Answer लिखें और Enter दबाएँ"
+onkeydown="handleEnter(event)"
+>
+
+<button onclick="checkAnswer()">
+Check
+</button>
+
+</div>
+
+
+<div id="result" class="result">
+
+<h2 id="resultTitle"></h2>
+
+<p id="resultText"></p>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- RECORDS -->
+
+<div class="card">
+
+<h2>🏆 Performance Records</h2>
+
+<div class="tableWrap">
+
+<table>
+
+<thead>
+
+<tr>
+<th>Name</th>
+<th>Time</th>
+<th>Questions</th>
+<th>Correct</th>
+<th>Wrong</th>
+<th>Level</th>
+<th>Score</th>
+</tr>
+
+</thead>
+
+<tbody id="records"></tbody>
+
+</table>
+
+</div>
+
+</div>
+
+</div>
+
+
+<script>
+
+let playerName="";
+
+let currentQuestion=null;
+
+let score=0;
+let correct=0;
+let wrong=0;
+let questionNo=0;
+
+let level=1;
+let levelCorrect=0;
+
+let answered=false;
+
+let startTime=0;
+let timerInterval=null;
+
+let nextTimer=null;
+
+
+/* =========================
+   START PLAYER
+========================= */
+
+function startPlayer(){
+
+let name=document
+.getElementById("playerName")
+.value.trim();
+
+if(!name){
+alert("पहले अपना नाम लिखें।");
+return;
+}
+
+playerName=name;
+
+document
+.getElementById("playerDisplay")
+.innerText=playerName;
+
+document
+.getElementById("namePage")
+.classList.add("hidden");
+
+document
+.getElementById("gamePage")
+.classList.remove("hidden");
+
+newGame();
+
+}
+
+
+/* =========================
+   NEW GAME
+========================= */
+
+function newGame(){
+
+clearTimeout(nextTimer);
+clearInterval(timerInterval);
+
+score=0;
+correct=0;
+wrong=0;
+questionNo=0;
+
+level=1;
+levelCorrect=0;
+
+answered=false;
+
+startTime=Date.now();
+
+timerInterval=setInterval(updateTimer,1000);
+
+updateTimer();
+updateDisplay();
+
+nextQuestion();
+
+}
+
+
+/* =========================
+   RANDOM
+========================= */
+
+function random(min,max){
+
+return Math.floor(
+Math.random()*(max-min+1)
+)+min;
+
+}
+
+
+/* =========================
+   RANDOM OPERATION
+   कोई fixed mix नहीं
+========================= */
+
+function randomOperation(){
+
+let operations=["+","-","×","÷","%"];
+
+return operations[
+random(0,operations.length-1)
+];
+
+}
+
+
+/* =========================
+   QUESTION GENERATOR
+========================= */
+
+function generateQuestion(){
+
+let operation=randomOperation();
+
+let a,b,answer,text;
+
+
+/*
+LEVEL 1
+दो digit से शुरुआत
+लेकिन operation random
+*/
+
+if(level===1){
+
+if(operation==="+"){
+
+a=random(10,99);
+b=random(10,99);
+
+answer=a+b;
+text=a+" + "+b;
+
+}
+
+else if(operation==="-"){
+
+a=random(20,99);
+b=random(10,a);
+
+answer=a-b;
+text=a+" − "+b;
+
+}
+
+else if(operation==="×"){
+
+a=random(10,30);
+b=random(2,9);
+
+answer=a*b;
+text=a+" × "+b;
+
+}
+
+else if(operation==="÷"){
+
+b=random(2,9);
+answer=random(2,12);
+
+a=b*answer;
+
+text=a+" ÷ "+b;
+
+}
+
+else{
+
+let p=[10,20,25,50][
+random(0,3)
+];
+
+let amount=random(2,10)*10;
+
+answer=(p/100)*amount;
+
+text=p+"% of "+amount;
+
+}
+
+}
+
+
+/*
+LEVEL 2
+थोड़ा कठिन
+*/
+
+else if(level===2){
+
+if(operation==="+"){
+
+a=random(20,99);
+b=random(20,99);
+
+answer=a+b;
+text=a+" + "+b;
+
+}
+
+else if(operation==="-"){
+
+a=random(30,99);
+b=random(10,a);
+
+answer=a-b;
+text=a+" − "+b;
+
+}
+
+else if(operation==="×"){
+
+a=random(10,50);
+b=random(2,12);
+
+answer=a*b;
+text=a+" × "+b;
+
+}
+
+else if(operation==="÷"){
+
+b=random(2,12);
+answer=random(5,25);
+
+a=b*answer;
+
+text=a+" ÷ "+b;
+
+}
+
+else{
+
+let p=[5,10,15,20,25,50][
+random(0,5)
+];
+
+let amount=random(5,20)*10;
+
+answer=(p/100)*amount;
+
+text=p+"% of "+amount;
+
+}
+
+}
+
+
+/*
+LEVEL 3
+बड़े numbers
+*/
+
+else if(level===3){
+
+if(operation==="+"){
+
+a=random(100,999);
+b=random(100,999);
+
+answer=a+b;
+text=a+" + "+b;
+
+}
+
+else if(operation==="-"){
+
+a=random(200,999);
+b=random(50,a);
+
+answer=a-b;
+text=a+" − "+b;
+
+}
+
+else if(operation==="×"){
+
+a=random(10,50);
+b=random(5,20);
+
+answer=a*b;
+text=a+" × "+b;
+
+}
+
+else if(operation==="÷"){
+
+b=random(5,20);
+answer=random(10,50);
+
+a=b*answer;
+
+text=a+" ÷ "+b;
+
+}
+
+else{
+
+let p=[5,10,15,20,25,30,40,50,75][
+random(0,8)
+];
+
+let amount=random(5,50)*20;
+
+answer=(p/100)*amount;
+
+text=p+"% of "+amount;
+
+}
+
+}
+
+
+/*
+LEVEL 4
+और कठिन
+*/
+
+else if(level===4){
+
+if(operation==="+"){
+
+a=random(500,9999);
+b=random(100,9999);
+
+answer=a+b;
+text=a+" + "+b;
+
+}
+
+else if(operation==="-"){
+
+a=random(1000,9999);
+b=random(100,Math.min(999,a));
+
+answer=a-b;
+text=a+" − "+b;
+
+}
+
+else if(operation==="×"){
+
+a=random(20,100);
+b=random(10,50);
+
+answer=a*b;
+text=a+" × "+b;
+
+}
+
+else if(operation==="÷"){
+
+b=random(5,30);
+answer=random(10,100);
+
+a=b*answer;
+
+text=a+" ÷ "+b;
+
+}
+
+else{
+
+let p=[5,10,12.5,15,20,25,30,40,50,75][
+random(0,9)
+];
+
+let amount=random(10,100)*20;
+
+answer=(p/100)*amount;
+
+text=p+"% of "+amount;
+
+}
+
+}
+
+
+/*
+LEVEL 5+
+Advanced random
+*/
+
+else{
+
+let advancedType=random(1,6);
+
+if(advancedType===1){
+
+a=random(1000,9999);
+b=random(1000,9999);
+
+answer=a+b;
+text=a+" + "+b;
+
+}
+
+else if(advancedType===2){
+
+a=random(2000,9999);
+b=random(100,1000);
+
+answer=a-b;
+text=a+" − "+b;
+
+}
+
+else if(advancedType===3){
+
+a=random(20,150);
+b=random(5,50);
+
+answer=a*b;
+text=a+" × "+b;
+
+}
+
+else if(advancedType===4){
+
+b=random(5,50);
+answer=random(20,150);
+
+a=b*answer;
+
+text=a+" ÷ "+b;
+
+}
+
+else{
+
+let p=[5,10,12.5,15,20,25,30,40,50,75][
+random(0,9)
+];
+
+let amount=random(10,100)*50;
+
+answer=(p/100)*amount;
+
+text=p+"% of "+amount;
+
+}
+
+}
+
+
+return{
+text:text,
+answer:answer
+};
+
+}
+
+
+/* =========================
+   NEXT QUESTION
+========================= */
+
+function nextQuestion(){
+
+currentQuestion=generateQuestion();
+
+questionNo++;
+
+answered=false;
+
+document
+.getElementById("questionText")
+.innerText=currentQuestion.text;
+
+document
+.getElementById("answer")
+.value="";
+
+document
+.getElementById("result")
+.style.display="none";
+
+updateDisplay();
+
+setTimeout(function(){
+
+document
+.getElementById("answer")
+.focus();
+
+},50);
+
+}
+
+
+/* =========================
+   ENTER
+========================= */
+
+function handleEnter(event){
+
+if(event.key!=="Enter")return;
+
+event.preventDefault();
+
+checkAnswer();
+
+}
+
+
+/* =========================
+   CHECK ANSWER
+========================= */
+
+function checkAnswer(){
+
+if(answered)return;
+
+if(!currentQuestion)return;
+
+let input=document
+.getElementById("answer")
+.value.trim();
+
+if(input===""){
+return;
+}
+
+let userAnswer=Number(input);
+
+answered=true;
+
+let result=document
+.getElementById("result");
+
+let title=document
+.getElementById("resultTitle");
+
+let resultText=document
+.getElementById("resultText");
+
+result.style.display="block";
+
+
+/* CORRECT */
+
+if(
+Math.abs(
+userAnswer-currentQuestion.answer
+)<0.000001
+){
+
+correct++;
+levelCorrect++;
+score+=10;
+
+result.className="result correct";
+
+title.innerText="🎉 सही जवाब!";
+
+resultText.innerHTML=
+"Correct! <b>"+
+formatNumber(currentQuestion.answer)+
+"</b>";
+
+/*
+हर 20 सही answers पर Level Up
+*/
+
+if(levelCorrect>=20){
+
+levelCorrect=0;
+
+if(level<5){
+
+level++;
+
+showLevelUp();
+
+}else{
+
+showLevelUp(true);
+
+}
+
+}
+
+}
+
+
+/* WRONG */
+
+else{
+
+wrong++;
+
+score=Math.max(0,score-2);
+
+result.className="result wrong";
+
+title.innerText="❌ गलत जवाब";
+
+resultText.innerHTML=
+"सही जवाब था: <b>"+
+formatNumber(currentQuestion.answer)+
+"</b>";
+
+}
+
+
+updateDisplay();
+
+
+/*
+सही या गलत दोनों में
+1 second बाद नया question
+*/
+
+clearTimeout(nextTimer);
+
+nextTimer=setTimeout(function(){
+
+nextQuestion();
+
+},1000);
+
+}
+
+
+/* =========================
+   LEVEL UP
+========================= */
+
+function showLevelUp(maxLevel=false){
+
+let message="";
+
+if(maxLevel){
+
+message=
+"🎉 20 सही!\n\n"+
+"आपने सबसे ऊँचा Level पूरा कर लिया!";
+
+}else{
+
+message=
+"🚀 LEVEL UP!\n\n"+
+"20 सही answers पूरे हुए।\n"+
+"अब Level "+level+" शुरू!";
+
+}
+
+setTimeout(function(){
+
+alert(message);
+
+},300);
+
+}
+
+
+/* =========================
+   DISPLAY
+========================= */
+
+function updateDisplay(){
+
+document
+.getElementById("score")
+.innerText=score;
+
+document
+.getElementById("correct")
+.innerText=correct;
+
+document
+.getElementById("wrong")
+.innerText=wrong;
+
+document
+.getElementById("questionNo")
+.innerText=questionNo;
+
+document
+.getElementById("levelName")
+.innerText="Level "+level;
+
+document
+.getElementById("levelProgress")
+.innerText=levelCorrect;
+
+document
+.getElementById("progressBar")
+.style.width=
+(levelCorrect/20*100)+"%";
+
+
+let description="";
+
+if(level===1){
+
+description=
+"2-digit numbers • + − × ÷ % • Random";
+
+}
+
+else if(level===2){
+
+description=
+"Medium numbers • Random Operations";
+
+}
+
+else if(level===3){
+
+description=
+"Large numbers • Random Operations";
+
+}
+
+else if(level===4){
+
+description=
+"Hard Maths • Random Operations";
+
+}
+
+else{
+
+description=
+"Advanced • + − × ÷ %";
+
+}
+
+document
+.getElementById("levelDescription")
+.innerText=description;
+
+
+/* ACCURACY */
+
+let total=correct+wrong;
+
+let accuracy=
+total===0
+?0
+:Math.round((correct/total)*100);
+
+document
+.getElementById("accuracy")
+.innerText=
+accuracy+"%";
+
+}
+
+
+/* =========================
+   NUMBER FORMAT
+========================= */
+
+function formatNumber(number){
+
+if(Number.isInteger(number)){
+return number;
+}
+
+return Number(number.toFixed(2));
+
+}
+
+
+/* =========================
+   TIMER
+========================= */
+
+function updateTimer(){
+
+if(!startTime)return;
+
+let total=
+Math.floor(
+(Date.now()-startTime)/1000
+);
+
+let minutes=
+Math.floor(total/60);
+
+let seconds=
+total%60;
+
+document
+.getElementById("timer")
+.innerText=
+String(minutes).padStart(2,"0")+
+":"+
+String(seconds).padStart(2,"0");
+
+}
+
+
+/* =========================
+   FINISH
+========================= */
+
+function finishGame(){
+
+if(questionNo===0)return;
+
+clearInterval(timerInterval);
+clearTimeout(nextTimer);
+
+let totalSeconds=
+Math.floor(
+(Date.now()-startTime)/1000
+);
+
+let minutes=
+Math.floor(totalSeconds/60);
+
+let seconds=
+totalSeconds%60;
+
+let time=
+String(minutes).padStart(2,"0")+
+":"+
+String(seconds).padStart(2,"0");
+
+
+let records=
+JSON.parse(
+localStorage.getItem("lawMathRecords")||"[]"
+);
+
+
+records.unshift({
+
+name:playerName,
+
+time:time,
+
+questions:questionNo,
+
+correct:correct,
+
+wrong:wrong,
+
+level:level,
+
+score:score,
+
+date:new Date()
+.toLocaleDateString("en-IN")
+
+});
+
+
+records=records.slice(0,50);
+
+
+localStorage.setItem(
+"lawMathRecords",
+JSON.stringify(records)
+);
+
+
+displayRecords();
+
+
+alert(
+"🏆 Challenge Complete!\n\n"+
+"Name: "+playerName+
+"\nTime: "+time+
+"\nQuestions: "+questionNo+
+"\nCorrect: "+correct+
+"\nWrong: "+wrong+
+"\nLevel: "+level+
+"\nScore: "+score
+);
+
+
+document
+.getElementById("gamePage")
+.classList.add("hidden");
+
+document
+.getElementById("namePage")
+.classList.remove("hidden");
+
+document
+.getElementById("playerName")
+.value="";
+
+playerName="";
+
+}
+
+
+/* =========================
+   RECORDS
+========================= */
+
+function displayRecords(){
+
+let records=
+JSON.parse(
+localStorage.getItem("lawMathRecords")||"[]"
+);
+
+let tbody=
+document.getElementById("records");
+
+tbody.innerHTML="";
+
+
+if(records.length===0){
+
+tbody.innerHTML=
+"<tr>"+
+"<td colspan='7'>"+
+"अभी कोई record नहीं है।"+
+"</td>"+
+"</tr>";
+
+return;
+
+}
+
+
+records.forEach(function(r){
+
+let tr=
+document.createElement("tr");
+
+tr.innerHTML=
+
+"<td>"+escapeHTML(r.name)+"</td>"+
+
+"<td>"+escapeHTML(r.time)+"</td>"+
+
+"<td>"+r.questions+"</td>"+
+
+"<td>✅ "+r.correct+"</td>"+
+
+"<td>❌ "+r.wrong+"</td>"+
+
+"<td>Level "+r.level+"</td>"+
+
+"<td><b>"+r.score+"</b></td>";
+
+tbody.appendChild(tr);
+
+});
+
+}
+
+
+/* =========================
+   SECURITY
+========================= */
+
+function escapeHTML(value){
+
+return String(value)
+
+.replaceAll("&","&amp;")
+
+.replaceAll("<","&lt;")
+
+.replaceAll(">","&gt;")
+
+.replaceAll('"',"&quot;")
+
+.replaceAll("'","&#039;");
+
+}
+
+
+displayRecords();
+
+</script>
+
+</body>
+</html>

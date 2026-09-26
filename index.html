@@ -3,241 +3,296 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>LAW Math Challenge</title>
+<title>LAW MATH CHALLENGE</title>
 
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
 
 body{
-font-family:Arial,sans-serif;
-background:linear-gradient(135deg,#eef4ff,#f8fbff);
-color:#172033;
-min-height:100vh
+    font-family:Arial,sans-serif;
+    min-height:100vh;
+    background:linear-gradient(135deg,#eef4ff,#f8fbff);
+    color:#172033;
 }
 
 header{
-background:linear-gradient(135deg,#2563eb,#4f46e5);
-color:white;
-text-align:center;
-padding:25px 15px;
-box-shadow:0 5px 20px #0002
+    background:linear-gradient(135deg,#2563eb,#4f46e5);
+    color:white;
+    text-align:center;
+    padding:25px 15px;
+    box-shadow:0 5px 20px #0002;
 }
 
-header h1{font-size:32px}
-header p{margin-top:8px}
+header h1{
+    font-size:32px;
+}
+
+header p{
+    margin-top:8px;
+}
 
 .container{
-max-width:900px;
-margin:auto;
-padding:25px 15px
+    max-width:950px;
+    margin:auto;
+    padding:25px 15px;
 }
 
 .card{
-background:white;
-padding:25px;
-border-radius:18px;
-box-shadow:0 8px 30px #0001;
-margin-bottom:20px
+    background:white;
+    padding:25px;
+    border-radius:18px;
+    box-shadow:0 8px 30px #0001;
+    margin-bottom:20px;
 }
 
 .login{
-max-width:500px;
-margin:35px auto;
-text-align:center
+    max-width:500px;
+    margin:35px auto;
+    text-align:center;
 }
 
 .login input{
-width:100%;
-padding:15px;
-border:2px solid #d5dbea;
-border-radius:10px;
-font-size:18px;
-margin:18px 0
+    width:100%;
+    padding:15px;
+    border:2px solid #d5dbea;
+    border-radius:10px;
+    font-size:18px;
+    margin:18px 0;
+    outline:none;
+}
+
+.login input:focus{
+    border-color:#2563eb;
 }
 
 .btn{
-border:0;
-border-radius:10px;
-cursor:pointer;
-background:#2563eb;
-color:white;
-padding:14px 25px;
-font-size:17px
+    border:0;
+    border-radius:10px;
+    cursor:pointer;
+    background:#2563eb;
+    color:white;
+    padding:14px 25px;
+    font-size:17px;
 }
 
-.full{width:100%}
-.hidden{display:none}
+.btn:hover{
+    opacity:.9;
+}
+
+.full{
+    width:100%;
+}
+
+.hidden{
+    display:none;
+}
 
 .top{
-display:flex;
-justify-content:space-between;
-align-items:center;
-gap:10px;
-margin-bottom:20px
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:10px;
+    margin-bottom:20px;
 }
 
 .finish{
-background:#dc2626;
-padding:10px 15px;
-font-size:14px
+    background:#dc2626;
+    padding:10px 15px;
+    font-size:14px;
 }
 
 .level{
-text-align:center;
-background:#eef4ff;
-padding:15px;
-border-radius:12px;
-margin-bottom:15px
+    text-align:center;
+    background:#eef4ff;
+    padding:18px;
+    border-radius:12px;
+    margin-bottom:18px;
 }
 
 .level h2{
-color:#2563eb;
-margin-bottom:5px
+    color:#2563eb;
+    margin-bottom:6px;
 }
 
 .progress{
-height:12px;
-background:#e5e7eb;
-border-radius:20px;
-overflow:hidden;
-margin-top:10px
+    height:12px;
+    background:#e5e7eb;
+    border-radius:20px;
+    overflow:hidden;
+    margin-top:12px;
 }
 
 .progressBar{
-height:100%;
-width:0%;
-background:#2563eb;
-transition:.3s
+    height:100%;
+    width:0%;
+    background:#2563eb;
+    transition:.3s;
 }
 
 .stats{
-display:grid;
-grid-template-columns:repeat(5,1fr);
-gap:10px;
-margin-bottom:20px
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:10px;
+    margin-bottom:20px;
 }
 
 .stat{
-background:#f8fafc;
-padding:14px 8px;
-border-radius:12px;
-text-align:center
+    background:#f8fafc;
+    padding:14px 8px;
+    border-radius:12px;
+    text-align:center;
 }
 
 .stat strong{
-display:block;
-font-size:23px;
-color:#2563eb
+    display:block;
+    font-size:23px;
+    color:#2563eb;
+    margin-bottom:4px;
 }
 
 .timer{
-text-align:center;
-font-size:21px;
-font-weight:bold;
-color:#dc2626;
-margin:15px
+    text-align:center;
+    font-size:21px;
+    font-weight:bold;
+    color:#dc2626;
+    margin:15px;
 }
 
 .question{
-background:#eef4ff;
-border-radius:15px;
-padding:35px 20px;
-text-align:center;
-margin:20px 0
+    background:#eef4ff;
+    border-radius:15px;
+    padding:35px 20px;
+    text-align:center;
+    margin:20px 0;
 }
 
 .question h2{
-color:#2563eb;
-margin-bottom:15px
+    color:#2563eb;
+    margin-bottom:15px;
 }
 
 #questionText{
-font-size:40px;
-font-weight:bold
+    font-size:42px;
+    font-weight:bold;
 }
 
 .answerBox{
-display:flex;
-gap:10px
+    display:flex;
+    gap:10px;
 }
 
 .answerBox input{
-flex:1;
-padding:16px;
-border:2px solid #d5dbea;
-border-radius:10px;
-font-size:22px;
-text-align:center;
-outline:none
+    flex:1;
+    padding:16px;
+    border:2px solid #d5dbea;
+    border-radius:10px;
+    font-size:22px;
+    text-align:center;
+    outline:none;
 }
 
 .answerBox input:focus{
-border-color:#2563eb
+    border-color:#2563eb;
 }
 
 .answerBox button{
-background:#2563eb;
-color:white;
-padding:0 25px;
-border:0;
-border-radius:10px
+    background:#2563eb;
+    color:white;
+    padding:0 25px;
+    border:0;
+    border-radius:10px;
+    font-size:17px;
+    cursor:pointer;
 }
 
 .result{
-display:none;
-padding:18px;
-border-radius:12px;
-text-align:center;
-margin-top:20px
+    display:none;
+    padding:18px;
+    border-radius:12px;
+    text-align:center;
+    margin-top:20px;
 }
 
 .correct{
-background:#dcfce7;
-color:#166534
+    background:#dcfce7;
+    color:#166534;
 }
 
 .wrong{
-background:#fee2e2;
-color:#991b1b
+    background:#fee2e2;
+    color:#991b1b;
 }
 
-table{
-width:100%;
-border-collapse:collapse;
-margin-top:15px
+.recordTitle{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:10px;
 }
 
-th,td{
-padding:12px;
-border-bottom:1px solid #ddd;
-text-align:center
-}
-
-th{
-background:#eef4ff
+.clearBtn{
+    background:#dc2626;
+    color:white;
+    border:0;
+    padding:9px 14px;
+    border-radius:8px;
+    cursor:pointer;
 }
 
 .tableWrap{
-overflow:auto
+    overflow:auto;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:15px;
+}
+
+th,td{
+    padding:11px;
+    border-bottom:1px solid #ddd;
+    text-align:center;
+    white-space:nowrap;
+}
+
+th{
+    background:#eef4ff;
+}
+
+.badge{
+    display:inline-block;
+    background:#2563eb;
+    color:white;
+    padding:4px 9px;
+    border-radius:20px;
 }
 
 @media(max-width:700px){
 
-.stats{
-grid-template-columns:1fr 1fr
-}
+    .stats{
+        grid-template-columns:1fr 1fr;
+    }
 
-.answerBox{
-flex-direction:column
-}
+    .answerBox{
+        flex-direction:column;
+    }
 
-.answerBox button{
-padding:14px
-}
+    .answerBox button{
+        padding:14px;
+    }
 
-#questionText{
-font-size:30px
-}
+    #questionText{
+        font-size:32px;
+    }
+
+    .top{
+        align-items:flex-start;
+    }
 
 }
 </style>
@@ -246,8 +301,8 @@ font-size:30px
 <body>
 
 <header>
-<h1>🧮 LAW MATH CHALLENGE</h1>
-<p>हर 20 सही जवाब के बाद Level Up 🚀</p>
+    <h1>🧮 LAW MATH CHALLENGE</h1>
+    <p>हर 20 सही जवाब के बाद Level Up 🚀</p>
 </header>
 
 <div class="container">
@@ -256,21 +311,22 @@ font-size:30px
 
 <div id="namePage" class="card login">
 
-<h2>👋 Welcome</h2>
+    <h2>👋 Welcome</h2>
 
-<p style="margin-top:10px">
-अपना नाम डालकर Math Challenge शुरू करें
-</p>
+    <p style="margin-top:10px;">
+        अपना नाम डालकर Math Challenge शुरू करें
+    </p>
 
-<input
-id="playerName"
-placeholder="अपना नाम लिखें"
-autocomplete="off"
->
+    <input
+        id="playerName"
+        type="text"
+        placeholder="अपना नाम लिखें"
+        autocomplete="off"
+    >
 
-<button class="btn full" onclick="startPlayer()">
-🚀 Start Challenge
-</button>
+    <button class="btn full" onclick="startPlayer()">
+        🚀 Start Challenge
+    </button>
 
 </div>
 
@@ -281,111 +337,112 @@ autocomplete="off"
 
 <div class="card">
 
-<div class="top">
+    <div class="top">
 
-<h2>
-Player:
-<span id="playerDisplay"></span>
-</h2>
+        <h2>
+            Player:
+            <span id="playerDisplay"></span>
+        </h2>
 
-<button class="btn finish" onclick="finishGame()">
-Finish
-</button>
+        <button class="btn finish" onclick="finishGame()">
+            Finish
+        </button>
 
-</div>
-
-
-<div class="level">
-
-<h2 id="levelName">Level 1</h2>
-
-<p id="levelDescription">
-2-digit questions
-</p>
-
-<p style="margin-top:8px">
-Next Level:
-<b><span id="levelProgress">0</span>/20</b>
-correct
-</p>
-
-<div class="progress">
-<div id="progressBar" class="progressBar"></div>
-</div>
-
-</div>
+    </div>
 
 
-<div class="stats">
+    <div class="level">
 
-<div class="stat">
-<strong id="score">0</strong>
-Score
-</div>
+        <h2 id="levelName">Level 1</h2>
 
-<div class="stat">
-<strong id="correct">0</strong>
-Correct
-</div>
+        <p id="levelDescription">
+            2-digit random questions
+        </p>
 
-<div class="stat">
-<strong id="wrong">0</strong>
-Wrong
-</div>
+        <p style="margin-top:8px;">
+            Level Progress:
+            <b>
+                <span id="levelProgress">0</span>/20
+            </b>
+        </p>
 
-<div class="stat">
-<strong id="questionNo">0</strong>
-Questions
-</div>
+        <div class="progress">
+            <div id="progressBar" class="progressBar"></div>
+        </div>
 
-<div class="stat">
-<strong id="accuracy">0%</strong>
-Accuracy
-</div>
-
-</div>
+    </div>
 
 
-<div class="timer">
-⏱️ <span id="timer">00:00</span>
-</div>
+    <div class="stats">
+
+        <div class="stat">
+            <strong id="score">0</strong>
+            Score
+        </div>
+
+        <div class="stat">
+            <strong id="correct">0</strong>
+            Correct
+        </div>
+
+        <div class="stat">
+            <strong id="wrong">0</strong>
+            Wrong
+        </div>
+
+        <div class="stat">
+            <strong id="questionNo">0</strong>
+            Questions
+        </div>
+
+        <div class="stat">
+            <strong id="accuracy">0%</strong>
+            Accuracy
+        </div>
+
+    </div>
 
 
-<div class="question">
-
-<h2>Question</h2>
-
-<div id="questionText">
-Loading...
-</div>
-
-</div>
+    <div class="timer">
+        ⏱️ <span id="timer">00:00</span>
+    </div>
 
 
-<div class="answerBox">
+    <div class="question">
 
-<input
-id="answer"
-type="number"
-inputmode="decimal"
-placeholder="Answer लिखें और Enter दबाएँ"
-onkeydown="handleEnter(event)"
->
+        <h2>Question</h2>
 
-<button onclick="checkAnswer()">
-Check
-</button>
+        <div id="questionText">
+            Loading...
+        </div>
 
-</div>
+    </div>
 
 
-<div id="result" class="result">
+    <div class="answerBox">
 
-<h2 id="resultTitle"></h2>
+        <input
+            id="answer"
+            type="number"
+            inputmode="decimal"
+            placeholder="Answer लिखें और Enter दबाएँ"
+            onkeydown="handleEnter(event)"
+        >
 
-<p id="resultText"></p>
+        <button onclick="checkAnswer()">
+            Check
+        </button>
 
-</div>
+    </div>
+
+
+    <div id="result" class="result">
+
+        <h2 id="resultTitle"></h2>
+
+        <p id="resultText"></p>
+
+    </div>
 
 </div>
 
@@ -396,31 +453,40 @@ Check
 
 <div class="card">
 
-<h2>🏆 Performance Records</h2>
+    <div class="recordTitle">
 
-<div class="tableWrap">
+        <h2>🏆 Level Records</h2>
 
-<table>
+        <button class="clearBtn" onclick="clearRecords()">
+            Clear
+        </button>
 
-<thead>
+    </div>
 
-<tr>
-<th>Name</th>
-<th>Time</th>
-<th>Questions</th>
-<th>Correct</th>
-<th>Wrong</th>
-<th>Level</th>
-<th>Score</th>
-</tr>
+    <div class="tableWrap">
 
-</thead>
+        <table>
 
-<tbody id="records"></tbody>
+            <thead>
 
-</table>
+                <tr>
+                    <th>Name</th>
+                    <th>Level</th>
+                    <th>Time</th>
+                    <th>Questions</th>
+                    <th>Correct</th>
+                    <th>Wrong</th>
+                    <th>Score</th>
+                    <th>Date</th>
+                </tr>
 
-</div>
+            </thead>
+
+            <tbody id="records"></tbody>
+
+        </table>
+
+    </div>
 
 </div>
 
@@ -429,57 +495,57 @@ Check
 
 <script>
 
-let playerName="";
+let playerName = "";
 
-let currentQuestion=null;
+let currentQuestion = null;
 
-let score=0;
-let correct=0;
-let wrong=0;
-let questionNo=0;
+let score = 0;
+let correct = 0;
+let wrong = 0;
+let questionNo = 0;
 
-let level=1;
-let levelCorrect=0;
+let level = 1;
+let levelCorrect = 0;
 
-let answered=false;
+let answered = false;
 
-let startTime=0;
-let timerInterval=null;
+let startTime = 0;
 
-let nextTimer=null;
+let timerInterval = null;
+let nextTimer = null;
 
 
 /* =========================
-   START PLAYER
+   START
 ========================= */
 
 function startPlayer(){
 
-let name=document
-.getElementById("playerName")
-.value.trim();
+    let name = document
+        .getElementById("playerName")
+        .value
+        .trim();
 
-if(!name){
-alert("पहले अपना नाम लिखें।");
-return;
-}
+    if(!name){
+        alert("पहले अपना नाम लिखें।");
+        return;
+    }
 
-playerName=name;
+    playerName = name;
 
-document
-.getElementById("playerDisplay")
-.innerText=playerName;
+    document
+        .getElementById("playerDisplay")
+        .innerText = playerName;
 
-document
-.getElementById("namePage")
-.classList.add("hidden");
+    document
+        .getElementById("namePage")
+        .classList.add("hidden");
 
-document
-.getElementById("gamePage")
-.classList.remove("hidden");
+    document
+        .getElementById("gamePage")
+        .classList.remove("hidden");
 
-newGame();
-
+    newGame();
 }
 
 
@@ -489,56 +555,60 @@ newGame();
 
 function newGame(){
 
-clearTimeout(nextTimer);
-clearInterval(timerInterval);
+    clearInterval(timerInterval);
+    clearTimeout(nextTimer);
 
-score=0;
-correct=0;
-wrong=0;
-questionNo=0;
+    score = 0;
+    correct = 0;
+    wrong = 0;
+    questionNo = 0;
 
-level=1;
-levelCorrect=0;
+    level = 1;
+    levelCorrect = 0;
 
-answered=false;
+    answered = false;
 
-startTime=Date.now();
+    startTime = Date.now();
 
-timerInterval=setInterval(updateTimer,1000);
+    timerInterval = setInterval(updateTimer,1000);
 
-updateTimer();
-updateDisplay();
+    updateTimer();
+    updateDisplay();
 
-nextQuestion();
-
+    nextQuestion();
 }
 
 
 /* =========================
-   RANDOM
+   RANDOM NUMBER
 ========================= */
 
 function random(min,max){
 
-return Math.floor(
-Math.random()*(max-min+1)
-)+min;
+    return Math.floor(
+        Math.random() * (max - min + 1)
+    ) + min;
 
 }
 
 
 /* =========================
    RANDOM OPERATION
-   कोई fixed mix नहीं
 ========================= */
 
 function randomOperation(){
 
-let operations=["+","-","×","÷","%"];
+    const operations = [
+        "+",
+        "-",
+        "×",
+        "÷",
+        "%"
+    ];
 
-return operations[
-random(0,operations.length-1)
-];
+    return operations[
+        random(0,operations.length - 1)
+    ];
 
 }
 
@@ -549,343 +619,350 @@ random(0,operations.length-1)
 
 function generateQuestion(){
 
-let operation=randomOperation();
+    let operation = randomOperation();
 
-let a,b,answer,text;
+    let a;
+    let b;
+    let answer;
+    let text;
 
 
-/*
-LEVEL 1
-दो digit से शुरुआत
-लेकिन operation random
-*/
+    /* LEVEL 1 */
 
-if(level===1){
+    if(level === 1){
 
-if(operation==="+"){
+        if(operation === "+"){
 
-a=random(10,99);
-b=random(10,99);
+            a = random(10,99);
+            b = random(10,99);
 
-answer=a+b;
-text=a+" + "+b;
+            answer = a + b;
+            text = a + " + " + b;
 
-}
+        }
 
-else if(operation==="-"){
+        else if(operation === "-"){
 
-a=random(20,99);
-b=random(10,a);
+            a = random(20,99);
+            b = random(10,a);
 
-answer=a-b;
-text=a+" − "+b;
+            answer = a - b;
+            text = a + " − " + b;
 
-}
+        }
 
-else if(operation==="×"){
+        else if(operation === "×"){
 
-a=random(10,30);
-b=random(2,9);
+            a = random(10,30);
+            b = random(2,9);
 
-answer=a*b;
-text=a+" × "+b;
+            answer = a * b;
+            text = a + " × " + b;
 
-}
+        }
 
-else if(operation==="÷"){
+        else if(operation === "÷"){
 
-b=random(2,9);
-answer=random(2,12);
+            b = random(2,9);
+            answer = random(2,12);
 
-a=b*answer;
+            a = b * answer;
 
-text=a+" ÷ "+b;
+            text = a + " ÷ " + b;
 
-}
+        }
 
-else{
+        else{
 
-let p=[10,20,25,50][
-random(0,3)
-];
+            let percentages = [
+                10,20,25,50
+            ];
 
-let amount=random(2,10)*10;
+            let p = percentages[
+                random(0,percentages.length-1)
+            ];
 
-answer=(p/100)*amount;
+            let amount = random(2,10) * 10;
 
-text=p+"% of "+amount;
+            answer = (p / 100) * amount;
 
-}
+            text = p + "% of " + amount;
 
-}
+        }
 
+    }
 
-/*
-LEVEL 2
-थोड़ा कठिन
-*/
 
-else if(level===2){
+    /* LEVEL 2 */
 
-if(operation==="+"){
+    else if(level === 2){
 
-a=random(20,99);
-b=random(20,99);
+        if(operation === "+"){
 
-answer=a+b;
-text=a+" + "+b;
+            a = random(20,99);
+            b = random(20,99);
 
-}
+            answer = a + b;
+            text = a + " + " + b;
 
-else if(operation==="-"){
+        }
 
-a=random(30,99);
-b=random(10,a);
+        else if(operation === "-"){
 
-answer=a-b;
-text=a+" − "+b;
+            a = random(30,99);
+            b = random(10,a);
 
-}
+            answer = a - b;
+            text = a + " − " + b;
 
-else if(operation==="×"){
+        }
 
-a=random(10,50);
-b=random(2,12);
+        else if(operation === "×"){
 
-answer=a*b;
-text=a+" × "+b;
+            a = random(10,50);
+            b = random(2,12);
 
-}
+            answer = a * b;
+            text = a + " × " + b;
 
-else if(operation==="÷"){
+        }
 
-b=random(2,12);
-answer=random(5,25);
+        else if(operation === "÷"){
 
-a=b*answer;
+            b = random(2,12);
+            answer = random(5,25);
 
-text=a+" ÷ "+b;
+            a = b * answer;
 
-}
+            text = a + " ÷ " + b;
 
-else{
+        }
 
-let p=[5,10,15,20,25,50][
-random(0,5)
-];
+        else{
 
-let amount=random(5,20)*10;
+            let percentages = [
+                5,10,15,20,25,50
+            ];
 
-answer=(p/100)*amount;
+            let p = percentages[
+                random(0,percentages.length-1)
+            ];
 
-text=p+"% of "+amount;
+            let amount = random(5,20) * 10;
 
-}
+            answer = (p / 100) * amount;
 
-}
+            text = p + "% of " + amount;
 
+        }
 
-/*
-LEVEL 3
-बड़े numbers
-*/
+    }
 
-else if(level===3){
 
-if(operation==="+"){
+    /* LEVEL 3 */
 
-a=random(100,999);
-b=random(100,999);
+    else if(level === 3){
 
-answer=a+b;
-text=a+" + "+b;
+        if(operation === "+"){
 
-}
+            a = random(100,999);
+            b = random(100,999);
 
-else if(operation==="-"){
+            answer = a + b;
+            text = a + " + " + b;
 
-a=random(200,999);
-b=random(50,a);
+        }
 
-answer=a-b;
-text=a+" − "+b;
+        else if(operation === "-"){
 
-}
+            a = random(200,999);
+            b = random(50,a);
 
-else if(operation==="×"){
+            answer = a - b;
+            text = a + " − " + b;
 
-a=random(10,50);
-b=random(5,20);
+        }
 
-answer=a*b;
-text=a+" × "+b;
+        else if(operation === "×"){
 
-}
+            a = random(10,50);
+            b = random(5,20);
 
-else if(operation==="÷"){
+            answer = a * b;
+            text = a + " × " + b;
 
-b=random(5,20);
-answer=random(10,50);
+        }
 
-a=b*answer;
+        else if(operation === "÷"){
 
-text=a+" ÷ "+b;
+            b = random(5,20);
+            answer = random(10,50);
 
-}
+            a = b * answer;
 
-else{
+            text = a + " ÷ " + b;
 
-let p=[5,10,15,20,25,30,40,50,75][
-random(0,8)
-];
+        }
 
-let amount=random(5,50)*20;
+        else{
 
-answer=(p/100)*amount;
+            let percentages = [
+                5,10,15,20,25,30,40,50,75
+            ];
 
-text=p+"% of "+amount;
+            let p = percentages[
+                random(0,percentages.length-1)
+            ];
 
-}
+            let amount = random(5,50) * 20;
 
-}
+            answer = (p / 100) * amount;
 
+            text = p + "% of " + amount;
 
-/*
-LEVEL 4
-और कठिन
-*/
+        }
 
-else if(level===4){
+    }
 
-if(operation==="+"){
 
-a=random(500,9999);
-b=random(100,9999);
+    /* LEVEL 4 */
 
-answer=a+b;
-text=a+" + "+b;
+    else if(level === 4){
 
-}
+        if(operation === "+"){
 
-else if(operation==="-"){
+            a = random(500,9999);
+            b = random(100,9999);
 
-a=random(1000,9999);
-b=random(100,Math.min(999,a));
+            answer = a + b;
+            text = a + " + " + b;
 
-answer=a-b;
-text=a+" − "+b;
+        }
 
-}
+        else if(operation === "-"){
 
-else if(operation==="×"){
+            a = random(1000,9999);
+            b = random(100,Math.min(999,a));
 
-a=random(20,100);
-b=random(10,50);
+            answer = a - b;
+            text = a + " − " + b;
 
-answer=a*b;
-text=a+" × "+b;
+        }
 
-}
+        else if(operation === "×"){
 
-else if(operation==="÷"){
+            a = random(20,100);
+            b = random(10,50);
 
-b=random(5,30);
-answer=random(10,100);
+            answer = a * b;
+            text = a + " × " + b;
 
-a=b*answer;
+        }
 
-text=a+" ÷ "+b;
+        else if(operation === "÷"){
 
-}
+            b = random(5,30);
+            answer = random(10,100);
 
-else{
+            a = b * answer;
 
-let p=[5,10,12.5,15,20,25,30,40,50,75][
-random(0,9)
-];
+            text = a + " ÷ " + b;
 
-let amount=random(10,100)*20;
+        }
 
-answer=(p/100)*amount;
+        else{
 
-text=p+"% of "+amount;
+            let percentages = [
+                5,10,12.5,15,20,25,30,40,50,75
+            ];
 
-}
+            let p = percentages[
+                random(0,percentages.length-1)
+            ];
 
-}
+            let amount = random(10,100) * 20;
 
+            answer = (p / 100) * amount;
 
-/*
-LEVEL 5+
-Advanced random
-*/
+            text = p + "% of " + amount;
 
-else{
+        }
 
-let advancedType=random(1,6);
+    }
 
-if(advancedType===1){
 
-a=random(1000,9999);
-b=random(1000,9999);
+    /* LEVEL 5+ */
 
-answer=a+b;
-text=a+" + "+b;
+    else{
 
-}
+        let type = random(1,5);
 
-else if(advancedType===2){
+        if(type === 1){
 
-a=random(2000,9999);
-b=random(100,1000);
+            a = random(1000,9999);
+            b = random(1000,9999);
 
-answer=a-b;
-text=a+" − "+b;
+            answer = a + b;
+            text = a + " + " + b;
 
-}
+        }
 
-else if(advancedType===3){
+        else if(type === 2){
 
-a=random(20,150);
-b=random(5,50);
+            a = random(2000,9999);
+            b = random(100,1000);
 
-answer=a*b;
-text=a+" × "+b;
+            answer = a - b;
+            text = a + " − " + b;
 
-}
+        }
 
-else if(advancedType===4){
+        else if(type === 3){
 
-b=random(5,50);
-answer=random(20,150);
+            a = random(20,150);
+            b = random(5,50);
 
-a=b*answer;
+            answer = a * b;
+            text = a + " × " + b;
 
-text=a+" ÷ "+b;
+        }
 
-}
+        else if(type === 4){
 
-else{
+            b = random(5,50);
+            answer = random(20,150);
 
-let p=[5,10,12.5,15,20,25,30,40,50,75][
-random(0,9)
-];
+            a = b * answer;
 
-let amount=random(10,100)*50;
+            text = a + " ÷ " + b;
 
-answer=(p/100)*amount;
+        }
 
-text=p+"% of "+amount;
+        else{
 
-}
+            let percentages = [
+                5,10,12.5,15,20,25,30,40,50,75
+            ];
 
-}
+            let p = percentages[
+                random(0,percentages.length-1)
+            ];
 
+            let amount = random(10,100) * 50;
 
-return{
-text:text,
-answer:answer
-};
+            answer = (p / 100) * amount;
+
+            text = p + "% of " + amount;
+
+        }
+
+    }
+
+
+    return {
+        text:text,
+        answer:answer
+    };
 
 }
 
@@ -896,33 +973,33 @@ answer:answer
 
 function nextQuestion(){
 
-currentQuestion=generateQuestion();
+    currentQuestion = generateQuestion();
 
-questionNo++;
+    questionNo++;
 
-answered=false;
+    answered = false;
 
-document
-.getElementById("questionText")
-.innerText=currentQuestion.text;
+    document
+        .getElementById("questionText")
+        .innerText = currentQuestion.text;
 
-document
-.getElementById("answer")
-.value="";
+    document
+        .getElementById("answer")
+        .value = "";
 
-document
-.getElementById("result")
-.style.display="none";
+    document
+        .getElementById("result")
+        .style.display = "none";
 
-updateDisplay();
+    updateDisplay();
 
-setTimeout(function(){
+    setTimeout(function(){
 
-document
-.getElementById("answer")
-.focus();
+        document
+            .getElementById("answer")
+            .focus();
 
-},50);
+    },50);
 
 }
 
@@ -933,11 +1010,13 @@ document
 
 function handleEnter(event){
 
-if(event.key!=="Enter")return;
+    if(event.key === "Enter"){
 
-event.preventDefault();
+        event.preventDefault();
 
-checkAnswer();
+        checkAnswer();
+
+    }
 
 }
 
@@ -948,147 +1027,220 @@ checkAnswer();
 
 function checkAnswer(){
 
-if(answered)return;
+    if(answered){
+        return;
+    }
 
-if(!currentQuestion)return;
+    if(!currentQuestion){
+        return;
+    }
 
-let input=document
-.getElementById("answer")
-.value.trim();
+    let input = document
+        .getElementById("answer")
+        .value
+        .trim();
 
-if(input===""){
-return;
-}
+    if(input === ""){
+        return;
+    }
 
-let userAnswer=Number(input);
+    let userAnswer = Number(input);
 
-answered=true;
+    answered = true;
 
-let result=document
-.getElementById("result");
+    let result = document
+        .getElementById("result");
 
-let title=document
-.getElementById("resultTitle");
+    let title = document
+        .getElementById("resultTitle");
 
-let resultText=document
-.getElementById("resultText");
-
-result.style.display="block";
-
-
-/* CORRECT */
-
-if(
-Math.abs(
-userAnswer-currentQuestion.answer
-)<0.000001
-){
-
-correct++;
-levelCorrect++;
-score+=10;
-
-result.className="result correct";
-
-title.innerText="🎉 सही जवाब!";
-
-resultText.innerHTML=
-"Correct! <b>"+
-formatNumber(currentQuestion.answer)+
-"</b>";
-
-/*
-हर 20 सही answers पर Level Up
-*/
-
-if(levelCorrect>=20){
-
-levelCorrect=0;
-
-if(level<5){
-
-level++;
-
-showLevelUp();
-
-}else{
-
-showLevelUp(true);
-
-}
-
-}
-
-}
+    let resultText = document
+        .getElementById("resultText");
 
 
-/* WRONG */
-
-else{
-
-wrong++;
-
-score=Math.max(0,score-2);
-
-result.className="result wrong";
-
-title.innerText="❌ गलत जवाब";
-
-resultText.innerHTML=
-"सही जवाब था: <b>"+
-formatNumber(currentQuestion.answer)+
-"</b>";
-
-}
+    result.style.display = "block";
 
 
-updateDisplay();
+    /* CORRECT */
+
+    if(
+        Math.abs(
+            userAnswer - currentQuestion.answer
+        ) < 0.000001
+    ){
+
+        correct++;
+
+        levelCorrect++;
+
+        score += 10;
+
+        result.className = "result correct";
+
+        title.innerText = "🎉 सही जवाब!";
+
+        resultText.innerHTML =
+            "बहुत बढ़िया! सही जवाब: <b>" +
+            formatNumber(currentQuestion.answer) +
+            "</b>";
 
 
-/*
-सही या गलत दोनों में
-1 second बाद नया question
-*/
+        /*
+            हर 20 सही answers पर
+            LEVEL RECORD AUTO SAVE
+        */
 
-clearTimeout(nextTimer);
+        if(levelCorrect >= 20){
 
-nextTimer=setTimeout(function(){
+            let completedLevel = level;
 
-nextQuestion();
+            saveLevelRecord(completedLevel);
 
-},1000);
+            levelCorrect = 0;
+
+            if(level < 5){
+
+                level++;
+
+                setTimeout(function(){
+
+                    alert(
+                        "🚀 LEVEL UP!\n\n" +
+                        "Level " +
+                        completedLevel +
+                        " पूरा हो गया!\n\n" +
+                        "अब Level " +
+                        level +
+                        " शुरू!"
+                    );
+
+                },300);
+
+            }
+            else{
+
+                setTimeout(function(){
+
+                    alert(
+                        "🏆 शानदार!\n\n" +
+                        "आपने Level 5 के 20 सवाल भी पूरे कर लिए!"
+                    );
+
+                },300);
+
+            }
+
+        }
+
+    }
+
+
+    /* WRONG */
+
+    else{
+
+        wrong++;
+
+        score = Math.max(0,score - 2);
+
+        result.className = "result wrong";
+
+        title.innerText = "❌ गलत जवाब";
+
+        resultText.innerHTML =
+            "सही जवाब था: <b>" +
+            formatNumber(currentQuestion.answer) +
+            "</b>";
+
+    }
+
+
+    updateDisplay();
+
+
+    /*
+        सही या गलत दोनों के बाद
+        नया question automatic
+    */
+
+    clearTimeout(nextTimer);
+
+    nextTimer = setTimeout(function(){
+
+        nextQuestion();
+
+    },1000);
 
 }
 
 
 /* =========================
-   LEVEL UP
+   AUTO SAVE LEVEL RECORD
 ========================= */
 
-function showLevelUp(maxLevel=false){
+function saveLevelRecord(completedLevel){
 
-let message="";
+    let totalSeconds =
+        Math.floor(
+            (Date.now() - startTime) / 1000
+        );
 
-if(maxLevel){
+    let minutes =
+        Math.floor(totalSeconds / 60);
 
-message=
-"🎉 20 सही!\n\n"+
-"आपने सबसे ऊँचा Level पूरा कर लिया!";
+    let seconds =
+        totalSeconds % 60;
 
-}else{
+    let time =
+        String(minutes).padStart(2,"0") +
+        ":" +
+        String(seconds).padStart(2,"0");
 
-message=
-"🚀 LEVEL UP!\n\n"+
-"20 सही answers पूरे हुए।\n"+
-"अब Level "+level+" शुरू!";
 
-}
+    let records =
+        JSON.parse(
+            localStorage.getItem(
+                "lawMathLevelRecords"
+            ) || "[]"
+        );
 
-setTimeout(function(){
 
-alert(message);
+    records.unshift({
 
-},300);
+        name:playerName,
+
+        level:completedLevel,
+
+        time:time,
+
+        questions:questionNo,
+
+        correct:correct,
+
+        wrong:wrong,
+
+        score:score,
+
+        date:new Date()
+            .toLocaleString("en-IN")
+
+    });
+
+
+    /*
+        केवल 100 records रखेंगे
+    */
+
+    records = records.slice(0,100);
+
+
+    localStorage.setItem(
+        "lawMathLevelRecords",
+        JSON.stringify(records)
+    );
+
+
+    displayRecords();
 
 }
 
@@ -1099,106 +1251,115 @@ alert(message);
 
 function updateDisplay(){
 
-document
-.getElementById("score")
-.innerText=score;
+    document
+        .getElementById("score")
+        .innerText = score;
 
-document
-.getElementById("correct")
-.innerText=correct;
+    document
+        .getElementById("correct")
+        .innerText = correct;
 
-document
-.getElementById("wrong")
-.innerText=wrong;
+    document
+        .getElementById("wrong")
+        .innerText = wrong;
 
-document
-.getElementById("questionNo")
-.innerText=questionNo;
+    document
+        .getElementById("questionNo")
+        .innerText = questionNo;
 
-document
-.getElementById("levelName")
-.innerText="Level "+level;
+    document
+        .getElementById("levelName")
+        .innerText =
+        "Level " + level;
 
-document
-.getElementById("levelProgress")
-.innerText=levelCorrect;
-
-document
-.getElementById("progressBar")
-.style.width=
-(levelCorrect/20*100)+"%";
+    document
+        .getElementById("levelProgress")
+        .innerText =
+        levelCorrect;
 
 
-let description="";
-
-if(level===1){
-
-description=
-"2-digit numbers • + − × ÷ % • Random";
-
-}
-
-else if(level===2){
-
-description=
-"Medium numbers • Random Operations";
-
-}
-
-else if(level===3){
-
-description=
-"Large numbers • Random Operations";
-
-}
-
-else if(level===4){
-
-description=
-"Hard Maths • Random Operations";
-
-}
-
-else{
-
-description=
-"Advanced • + − × ÷ %";
-
-}
-
-document
-.getElementById("levelDescription")
-.innerText=description;
+    document
+        .getElementById("progressBar")
+        .style.width =
+        (levelCorrect / 20 * 100) + "%";
 
 
-/* ACCURACY */
+    let description = "";
 
-let total=correct+wrong;
 
-let accuracy=
-total===0
-?0
-:Math.round((correct/total)*100);
+    if(level === 1){
 
-document
-.getElementById("accuracy")
-.innerText=
-accuracy+"%";
+        description =
+            "2-digit numbers • + − × ÷ % • Random";
+
+    }
+
+    else if(level === 2){
+
+        description =
+            "Medium numbers • Random Operations";
+
+    }
+
+    else if(level === 3){
+
+        description =
+            "Large numbers • Random Operations";
+
+    }
+
+    else if(level === 4){
+
+        description =
+            "Hard Maths • Random Operations";
+
+    }
+
+    else{
+
+        description =
+            "Advanced Maths • Random Operations";
+
+    }
+
+
+    document
+        .getElementById("levelDescription")
+        .innerText =
+        description;
+
+
+    let total = correct + wrong;
+
+    let accuracy =
+        total === 0
+        ? 0
+        : Math.round(
+            (correct / total) * 100
+        );
+
+
+    document
+        .getElementById("accuracy")
+        .innerText =
+        accuracy + "%";
 
 }
 
 
 /* =========================
-   NUMBER FORMAT
+   FORMAT NUMBER
 ========================= */
 
 function formatNumber(number){
 
-if(Number.isInteger(number)){
-return number;
-}
+    if(Number.isInteger(number)){
+        return number;
+    }
 
-return Number(number.toFixed(2));
+    return Number(
+        number.toFixed(2)
+    );
 
 }
 
@@ -1209,25 +1370,28 @@ return Number(number.toFixed(2));
 
 function updateTimer(){
 
-if(!startTime)return;
+    if(!startTime){
+        return;
+    }
 
-let total=
-Math.floor(
-(Date.now()-startTime)/1000
-);
+    let total =
+        Math.floor(
+            (Date.now() - startTime) / 1000
+        );
 
-let minutes=
-Math.floor(total/60);
+    let minutes =
+        Math.floor(total / 60);
 
-let seconds=
-total%60;
+    let seconds =
+        total % 60;
 
-document
-.getElementById("timer")
-.innerText=
-String(minutes).padStart(2,"0")+
-":"+
-String(seconds).padStart(2,"0");
+
+    document
+        .getElementById("timer")
+        .innerText =
+        String(minutes).padStart(2,"0") +
+        ":" +
+        String(seconds).padStart(2,"0");
 
 }
 
@@ -1238,152 +1402,209 @@ String(seconds).padStart(2,"0");
 
 function finishGame(){
 
-if(questionNo===0)return;
+    if(questionNo === 0){
+        return;
+    }
 
-clearInterval(timerInterval);
-clearTimeout(nextTimer);
-
-let totalSeconds=
-Math.floor(
-(Date.now()-startTime)/1000
-);
-
-let minutes=
-Math.floor(totalSeconds/60);
-
-let seconds=
-totalSeconds%60;
-
-let time=
-String(minutes).padStart(2,"0")+
-":"+
-String(seconds).padStart(2,"0");
+    clearInterval(timerInterval);
+    clearTimeout(nextTimer);
 
 
-let records=
-JSON.parse(
-localStorage.getItem("lawMathRecords")||"[]"
-);
+    let totalSeconds =
+        Math.floor(
+            (Date.now() - startTime) / 1000
+        );
+
+    let minutes =
+        Math.floor(totalSeconds / 60);
+
+    let seconds =
+        totalSeconds % 60;
+
+    let time =
+        String(minutes).padStart(2,"0") +
+        ":" +
+        String(seconds).padStart(2,"0");
 
 
-records.unshift({
+    /*
+        Current session record
+    */
 
-name:playerName,
-
-time:time,
-
-questions:questionNo,
-
-correct:correct,
-
-wrong:wrong,
-
-level:level,
-
-score:score,
-
-date:new Date()
-.toLocaleDateString("en-IN")
-
-});
+    let sessionRecords =
+        JSON.parse(
+            localStorage.getItem(
+                "lawMathSessionRecords"
+            ) || "[]"
+        );
 
 
-records=records.slice(0,50);
+    sessionRecords.unshift({
+
+        name:playerName,
+
+        time:time,
+
+        questions:questionNo,
+
+        correct:correct,
+
+        wrong:wrong,
+
+        level:level,
+
+        score:score,
+
+        date:new Date()
+            .toLocaleString("en-IN")
+
+    });
 
 
-localStorage.setItem(
-"lawMathRecords",
-JSON.stringify(records)
-);
+    sessionRecords =
+        sessionRecords.slice(0,100);
 
 
-displayRecords();
+    localStorage.setItem(
+        "lawMathSessionRecords",
+        JSON.stringify(sessionRecords)
+    );
 
 
-alert(
-"🏆 Challenge Complete!\n\n"+
-"Name: "+playerName+
-"\nTime: "+time+
-"\nQuestions: "+questionNo+
-"\nCorrect: "+correct+
-"\nWrong: "+wrong+
-"\nLevel: "+level+
-"\nScore: "+score
-);
+    alert(
+        "🏆 Challenge Complete!\n\n" +
+        "Name: " + playerName +
+        "\nTime: " + time +
+        "\nQuestions: " + questionNo +
+        "\nCorrect: " + correct +
+        "\nWrong: " + wrong +
+        "\nLevel: " + level +
+        "\nScore: " + score
+    );
 
 
-document
-.getElementById("gamePage")
-.classList.add("hidden");
+    document
+        .getElementById("gamePage")
+        .classList.add("hidden");
 
-document
-.getElementById("namePage")
-.classList.remove("hidden");
+    document
+        .getElementById("namePage")
+        .classList.remove("hidden");
 
-document
-.getElementById("playerName")
-.value="";
+    document
+        .getElementById("playerName")
+        .value = "";
 
-playerName="";
+    playerName = "";
 
 }
 
 
 /* =========================
-   RECORDS
+   DISPLAY RECORDS
 ========================= */
 
 function displayRecords(){
 
-let records=
-JSON.parse(
-localStorage.getItem("lawMathRecords")||"[]"
-);
-
-let tbody=
-document.getElementById("records");
-
-tbody.innerHTML="";
+    let records =
+        JSON.parse(
+            localStorage.getItem(
+                "lawMathLevelRecords"
+            ) || "[]"
+        );
 
 
-if(records.length===0){
+    let tbody =
+        document.getElementById("records");
 
-tbody.innerHTML=
-"<tr>"+
-"<td colspan='7'>"+
-"अभी कोई record नहीं है।"+
-"</td>"+
-"</tr>";
+    tbody.innerHTML = "";
 
-return;
+
+    if(records.length === 0){
+
+        tbody.innerHTML =
+            "<tr>" +
+            "<td colspan='8'>" +
+            "अभी कोई Level record नहीं है।" +
+            "</td>" +
+            "</tr>";
+
+        return;
+    }
+
+
+    records.forEach(function(r){
+
+        let tr =
+            document.createElement("tr");
+
+
+        tr.innerHTML =
+
+            "<td>" +
+            escapeHTML(r.name) +
+            "</td>" +
+
+            "<td>" +
+            "<span class='badge'>Level " +
+            r.level +
+            "</span>" +
+            "</td>" +
+
+            "<td>" +
+            escapeHTML(r.time) +
+            "</td>" +
+
+            "<td>" +
+            r.questions +
+            "</td>" +
+
+            "<td>✅ " +
+            r.correct +
+            "</td>" +
+
+            "<td>❌ " +
+            r.wrong +
+            "</td>" +
+
+            "<td><b>" +
+            r.score +
+            "</b></td>" +
+
+            "<td>" +
+            escapeHTML(r.date) +
+            "</td>";
+
+
+        tbody.appendChild(tr);
+
+    });
 
 }
 
 
-records.forEach(function(r){
+/* =========================
+   CLEAR RECORDS
+========================= */
 
-let tr=
-document.createElement("tr");
+function clearRecords(){
 
-tr.innerHTML=
+    if(
+        !confirm(
+            "क्या आप सभी Level records delete करना चाहते हैं?"
+        )
+    ){
 
-"<td>"+escapeHTML(r.name)+"</td>"+
+        return;
 
-"<td>"+escapeHTML(r.time)+"</td>"+
+    }
 
-"<td>"+r.questions+"</td>"+
 
-"<td>✅ "+r.correct+"</td>"+
+    localStorage.removeItem(
+        "lawMathLevelRecords"
+    );
 
-"<td>❌ "+r.wrong+"</td>"+
-
-"<td>Level "+r.level+"</td>"+
-
-"<td><b>"+r.score+"</b></td>";
-
-tbody.appendChild(tr);
-
-});
+    displayRecords();
 
 }
 
@@ -1394,20 +1615,24 @@ tbody.appendChild(tr);
 
 function escapeHTML(value){
 
-return String(value)
+    return String(value)
 
-.replaceAll("&","&amp;")
+        .replaceAll("&","&amp;")
 
-.replaceAll("<","&lt;")
+        .replaceAll("<","&lt;")
 
-.replaceAll(">","&gt;")
+        .replaceAll(">","&gt;")
 
-.replaceAll('"',"&quot;")
+        .replaceAll('"',"&quot;")
 
-.replaceAll("'","&#039;");
+        .replaceAll("'","&#039;");
 
 }
 
+
+/* =========================
+   LOAD RECORDS
+========================= */
 
 displayRecords();
 
